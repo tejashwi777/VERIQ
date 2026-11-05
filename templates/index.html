@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERIQ | QA Test Data Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">D</div>
+            <div>
+                <h2>VERIQ</h2>
+                <span>QA DATA STUDIO</span>
+            </div>
+        </div>
+
+        <div class="side-label">WORKSPACE</div>
+        <a class="nav-item active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-item" href="#generator">✧ <span>Data Generator</span></a>
+        <a class="nav-item" href="#records">▤ <span>Generated Records</span></a>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">QA</div>
+                <div>
+                    <strong>QA Workspace</strong>
+                    <small>Personal Studio</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">WORKSPACE / OVERVIEW</p>
+                <h1>Test Data Studio</h1>
+                <p class="subtitle">Generate, validate and manage your QA test data.</p>
+            </div>
+            <div class="top-right">
+                <span class="live-dot"></span>
+                <span>System ready</span>
+                <div class="top-avatar">Q</div>
+            </div>
+        </header>
+
+        <section class="welcome-banner">
+            <div>
+                <span class="banner-tag">✦ YOUR QA WORKSPACE</span>
+                <h2>Good testing starts with<br>good test data.</h2>
+                <p>Create realistic sample records and validate them in seconds.</p>
+                <a href="#generator" class="banner-button">Generate data <span>→</span></a>
+            </div>
+            <div class="banner-art">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="data-symbol">D</div>
+                <span class="floating-symbol symbol-one">✦</span>
+                <span class="floating-symbol symbol-two">⌘</span>
+                <span class="floating-symbol symbol-three">01</span>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-top"><span>Total Records</span><span class="stat-icon purple">▤</span></div>
+                <h2 id="totalCount">0</h2>
+                <p>Generated records</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top"><span>Valid Records</span><span class="stat-icon green">✓</span></div>
+                <h2 id="validCount">0</h2>
+                <p>Passed validation</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top"><span>Invalid Records</span><span class="stat-icon red">!</span></div>
+                <h2 id="invalidCount">0</h2>
+                <p>Need attention</p>
+            </div>
+        </section>
+
+        <section class="generator-section" id="generator">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">DATA CONFIGURATION</p>
+                    <h2>Generate test records</h2>
+                    <p>Configure your dataset and let VERIQ do the rest.</p>
+                </div>
+                <span class="version-tag">● GENERATOR V1.0</span>
+            </div>
+
+            <div class="generator-card">
+                <div class="generator-left">
+                    <div class="input-label">NUMBER OF RECORDS</div>
+                    <div class="count-options">
+                        <button class="count-btn active" data-count="10">10</button>
+                        <button class="count-btn" data-count="25">25</button>
+                        <button class="count-btn" data-count="50">50</button>
+                        <button class="count-btn" data-count="100">100</button>
+                    </div>
+                    <p class="helper-text">Choose how many sample users to generate.</p>
+                </div>
+
+                <div class="generator-right">
+                    <div class="input-label">DATASET TYPE</div>
+                    <div class="dataset-box">
+                        <span class="dataset-icon">♙</span>
+                        <div>
+                            <strong>Customer Records</strong>
+                            <small>Name · Email · Phone</small>
+                        </div>
+                        <span class="dataset-check">✓</span>
+                    </div>
+                </div>
+
+                <button class="generate-btn" id="generateBtn">
+                    <span>✧</span> Generate test data
+                </button>
+            </div>
+        </section>
+
+        <section class="records-section" id="records">
+            <div class="records-heading">
+                <div>
+                    <p class="eyebrow">YOUR DATASET</p>
+                    <h2>Generated records</h2>
+                </div>
+                <div class="record-actions">
+                    <input type="text" id="searchInput" placeholder="⌕  Search records...">
+                    <button id="exportBtn" class="export-btn">↓ Export CSV</button>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-top">
+                    <span id="recordSummary">No records generated yet</span>
+                    <span class="table-indicator">● Live dataset</span>
+                </div>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>FULL NAME</th>
+                                <th>EMAIL ADDRESS</th>
+                                <th>PHONE NUMBER</th>
+                                <th>STATUS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsBody">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-icon">▤</div>
+                                    <strong>Your dataset is empty</strong>
+                                    <p>Generate your first test records to get started.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span>VERIQ © 2026</span>
+            <span>Built for better testing <span class="footer-star">✦</span></span>
+        </footer>
+
+    </main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
